@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "sleeppercentage",
+  "version": "${version}",
+  "name": "sleepPercentage",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/sleeppercentage/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "fabric-datagen": [
+      "de.jr.sleeppercentage.client.SleeppercentageDataGenerator"
+    ],
+    "main": [
+      "de.jr.sleeppercentage.Sleeppercentage"
+    ]
+  },
+  "mixins": [
+    "sleeppercentage.mixins.json",
+    {
+      "config": "sleeppercentage.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
