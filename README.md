@@ -17,3 +17,11 @@
 - The gamerule is updated automatically whenever someone joins, leaves, or changes the config.
 
 - Operator permissions are required to change the configuration.
+
+```properties
+mod_version = v.1.0.0
+minecraft_version = 1.21.4
+yarn_mappings = 1.21.4+build.8
+loader_version = 0.16.9
+mod_version = 1.0-SNAPSHOT
+fabric_version = 0.111.0+1.21.4
