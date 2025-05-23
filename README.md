@@ -1,0 +1,27 @@
+## Problem:
+
+- You have one or more bot players on your Minecraft server to keep chunks loaded.
+
+- You can't go to sleep without adjusting the playerSleepingPercentage gamerule.
+
+- The number of real players on the server changes, so setting a fixed value isn't practical.
+
+## Solution:
+
+- A command allows you to specify the number of bot players.
+
+- The playerSleepingPercentage gamerule is automatically adjusted based on the number of real players.
+
+- You can define what percentage of real players must sleep.
+
+- The gamerule is updated automatically whenever someone joins, leaves, or changes the config.
+
+- Operator permissions are required to change the configuration.
+
+```properties
+mod_version = v.1.0.0
+minecraft_version = 1.21.4
+yarn_mappings = 1.21.4+build.8
+loader_version = 0.16.9
+mod_version = 1.0-SNAPSHOT
+fabric_version = 0.111.0+1.21.4
