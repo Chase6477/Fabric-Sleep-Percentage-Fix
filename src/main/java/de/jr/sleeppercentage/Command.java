@@ -16,7 +16,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 public class Command {
 
     public void command(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("csp").requires(source -> source.hasPermissionLevel(0))
+        dispatcher.register(literal("csp").requires(source -> source.hasPermissionLevel(4))
                 .executes(context -> 0)
 
                 .then(literal("addBot")
