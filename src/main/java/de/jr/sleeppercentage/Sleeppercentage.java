@@ -9,7 +9,8 @@ public class Sleeppercentage implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        ConfigManager.loadConfig();
+
+        Gson.loadConfig();
 
         new PlayerEventListener().onPlayerConnection();
 

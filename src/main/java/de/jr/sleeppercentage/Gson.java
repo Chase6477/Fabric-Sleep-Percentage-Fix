@@ -1,6 +1,5 @@
 package de.jr.sleeppercentage;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
@@ -8,16 +7,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ConfigManager {
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+public class Gson {
+    private static final com.google.gson.Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final File CONFIG_FILE = new File("config/csp.json");
 
-    public static ConfigClass config = new ConfigClass();
+    public static Config config = new Config();
 
     public static void loadConfig() {
         if (CONFIG_FILE.exists()) {
             try (FileReader reader = new FileReader(CONFIG_FILE)) {
-                config = GSON.fromJson(reader, ConfigClass.class);
+                config = GSON.fromJson(reader, Config.class);
             } catch (IOException e) {
                 System.err.println("Failed to load config: " + e.getMessage());
             }

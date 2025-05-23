@@ -16,7 +16,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 public class Command {
 
     public void command(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("csp").requires(source -> source.hasPermissionLevel(4))
+        dispatcher.register(literal("csp").requires(source -> source.hasPermissionLevel(Gson.config.permissionLevel))
                 .executes(context -> 0)
 
                 .then(literal("addBot")
@@ -26,10 +26,10 @@ public class Command {
 
                         .then(argument("player", EntityArgumentType.player()).executes(context -> {
                             ServerPlayerEntity player = EntityArgumentType.getPlayer(context, "player");
-                            if (!ConfigManager.config.bots.containsKey(player.getUuid())) {
+                            if (!Gson.config.bots.containsKey(player.getUuid())) {
                                 context.getSource().sendFeedback(() -> Text.literal(player.getName().getLiteralString() + " was added to bots"), false);
-                                ConfigManager.config.bots.put(player.getUuid(), player.getName().getLiteralString());
-                                ConfigManager.saveConfig();
+                                Gson.config.bots.put(player.getUuid(), player.getName().getLiteralString());
+                                Gson.saveConfig();
                                 MinecraftServer server = context.getSource().getServer();
                                 PlayerEventListener.reload(server);
                             } else context.getSource().sendFeedback(() -> Text.literal(player.getName().getLiteralString() + " was already added to bots"), false);
@@ -41,16 +41,16 @@ public class Command {
                             return 0;})
 
                         .then(argument("player", EntityArgumentType.player()).suggests((context, builder) -> {
-                            for (UUID uuid : ConfigManager.config.bots.keySet()) {
-                                builder.suggest(ConfigManager.config.bots.get(uuid));
+                            for (UUID uuid : Gson.config.bots.keySet()) {
+                                builder.suggest(Gson.config.bots.get(uuid));
                             }
                             return builder.buildFuture();})
                                 .executes(context -> {
                                     ServerPlayerEntity player = EntityArgumentType.getPlayer(context, "player");
-                                    if (ConfigManager.config.bots.containsKey(player.getUuid())) {
+                                    if (Gson.config.bots.containsKey(player.getUuid())) {
                                         context.getSource().sendFeedback(() -> Text.literal(player.getName().getLiteralString() + " was removed from bots"), false);
-                                        ConfigManager.config.bots.remove(player.getUuid());
-                                        ConfigManager.saveConfig();
+                                        Gson.config.bots.remove(player.getUuid());
+                                        Gson.saveConfig();
                                         MinecraftServer server = context.getSource().getServer();
                                         PlayerEventListener.reload(server);
                                     } else context.getSource().sendFeedback(() -> Text.literal(player.getName().getLiteralString() + " was not added to bots"), false);
@@ -69,8 +69,8 @@ public class Command {
                                 {
                                     int value = IntegerArgumentType.getInteger(context, "value");
                                     context.getSource().sendFeedback(() -> Text.literal("Percentage was set to: " + value), false);
-                                    ConfigManager.config.playerSleepPercentage = value;
-                                    ConfigManager.saveConfig();
+                                    Gson.config.playerSleepPercentage = value;
+                                    Gson.saveConfig();
                                     MinecraftServer server = context.getSource().getServer();
                                     PlayerEventListener.reload(server);
                                     return 1;})))

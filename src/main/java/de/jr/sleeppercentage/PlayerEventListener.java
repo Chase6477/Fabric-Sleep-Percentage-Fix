@@ -1,7 +1,6 @@
 package de.jr.sleeppercentage;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -41,12 +40,12 @@ public class PlayerEventListener {
         int count = overworldPlayerUUIDs.size();
         int botCount = 0;
         for (UUID uuid : overworldPlayerUUIDs) {
-            if (ConfigManager.config.bots.containsKey(uuid))
+            if (Gson.config.bots.containsKey(uuid))
                 botCount++;
         }
 
         int playerCount = Math.max(count - botCount, 0);
-        int playerSleepPercentage = ConfigManager.config.playerSleepPercentage;
+        int playerSleepPercentage = Gson.config.playerSleepPercentage;
         if (count > 0) {
 
             float newSleepPercentage = (1.0f /  (float) count) * (float) playerSleepPercentage *  (float) playerCount;
