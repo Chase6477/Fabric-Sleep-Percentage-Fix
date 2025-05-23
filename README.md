@@ -8,20 +8,35 @@
 
 ## Solution:
 
-- A command allows you to specify the number of bot players.
+- A command allows you to specify players as bots.
+  
+  ```/csp addBot name```
+  
+  ```/csp removeBot name```
 
 - The playerSleepingPercentage gamerule is automatically adjusted based on the number of real players.
 
 - You can define what percentage of real players must sleep.
+  
+  ```/csp setPercentage value```
 
-- The gamerule is updated automatically whenever someone joins, leaves, or changes the config.
+- The gamerule is updated automatically whenever someone joins, leaves, changes dimensions or changes the config.
 
 - Operator permissions are required to change the configuration.
 
+## Error Handeling
+
+- When something doesn't seem to work, try to reload the mod.
+
+  ```/csp reload```
+
+- Or delete the *csp.json* to factory-reset it.
+
+
+### Properties
 ```properties
-mod_version = v.1.0.0
 minecraft_version = 1.21.4
 yarn_mappings = 1.21.4+build.8
 loader_version = 0.16.9
-mod_version = 1.0-SNAPSHOT
+mod_version = v.1.1.0
 fabric_version = 0.111.0+1.21.4
