@@ -9,6 +9,7 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class PlayerEventListener {
@@ -26,9 +27,8 @@ public class PlayerEventListener {
         });
     }
     public static void onPlayerChangedWorld(ServerPlayerEntity player, ServerWorld fromWorld, ServerWorld toWorld) {
-        if (player == null)return;
         if ((fromWorld.getRegistryKey() == World.OVERWORLD) || (toWorld.getRegistryKey() == World.OVERWORLD)) {
-            reload(player.getServer());
+            reload(Objects.requireNonNull(player.getServer()));
         }
     }
 
