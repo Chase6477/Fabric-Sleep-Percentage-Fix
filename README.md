@@ -1,4 +1,4 @@
-## Problem:
+## Problem
 
 - You have one or more bot players on your Minecraft server to keep chunks loaded.
 
@@ -6,7 +6,7 @@
 
 - The number of real players on the server changes, so setting a fixed value isn't practical.
 
-## Solution:
+## Solution
 
 - A command allows you to specify players as bots.
   
@@ -32,8 +32,11 @@
 
 - Or delete the *csp.json* to factory-reset it.
 
+## Requires
 
-### Properties
+- A Fabric based Minecraft Server
+
+## Properties
 ```properties
 minecraft_version = 1.21.4
 yarn_mappings = 1.21.4+build.8
