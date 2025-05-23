@@ -33,6 +33,10 @@ public class ConfigManager {
             System.err.println("Failed to save config: " + e.getMessage());
         }
     }
+
+    public void config(){
+
+    }
 }
 
 

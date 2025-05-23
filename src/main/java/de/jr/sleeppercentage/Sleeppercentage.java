@@ -2,6 +2,7 @@ package de.jr.sleeppercentage;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 
 public class Sleeppercentage implements ModInitializer {
 
@@ -10,14 +11,12 @@ public class Sleeppercentage implements ModInitializer {
 
         ConfigManager.loadConfig();
 
-        if (!ConfigManager.config.isEnabled) {
-            throw new RuntimeException("Mod disabled via config.");
-        }
+        new PlayerEventListener().onPlayerConnection();
 
-        new PlayerEventListener().register();
+        ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(PlayerEventListener::onPlayerChangedWorld);
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            new CommandListener().command(dispatcher);
+            new Command().command(dispatcher);
         });
 
 

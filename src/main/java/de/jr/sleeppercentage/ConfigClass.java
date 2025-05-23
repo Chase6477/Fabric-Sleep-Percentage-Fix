@@ -1,8 +1,10 @@
 package de.jr.sleeppercentage;
 
+
+import java.util.*;
+
 public class ConfigClass{
-    public boolean isEnabled = true;
-    public int botCount = 0;
     public int playerSleepPercentage = 100;
+    public HashMap<UUID, String> bots = new HashMap<>();
 
 }
