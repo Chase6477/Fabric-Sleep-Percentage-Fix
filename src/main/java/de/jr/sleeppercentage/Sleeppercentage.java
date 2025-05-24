@@ -16,9 +16,7 @@ public class Sleeppercentage implements ModInitializer {
 
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(PlayerEventListener::onPlayerChangedWorld);
 
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            new Command().command(dispatcher);
-        });
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> new Command().command(dispatcher));
 
 
     }

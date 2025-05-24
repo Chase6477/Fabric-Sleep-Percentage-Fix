@@ -16,14 +16,10 @@ public class PlayerEventListener {
 
     public void onPlayerConnection() {
         // Player join
-        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-            reload(server);
-        });
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> reload(server));
 
         // Player leave
-        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-            reload(server);
-        });
+        ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> reload(server));
     }
     public static void onPlayerChangedWorld(ServerPlayerEntity player, ServerWorld fromWorld, ServerWorld toWorld) {
         if ((fromWorld.getRegistryKey() == World.OVERWORLD) || (toWorld.getRegistryKey() == World.OVERWORLD)) {
