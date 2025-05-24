@@ -22,7 +22,7 @@
 
 - The gamerule is updated automatically whenever someone joins, leaves, changes dimensions or changes the config.
 
-- Operator permissions are required to change the configuration.
+- Permissionslevels can be modified in the Config
 
 ## Error Handeling
 
